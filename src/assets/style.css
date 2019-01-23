@@ -1,0 +1,44 @@
+html, body {
+  margin: 0px 0px 0px 0px;
+}
+
+
+.q4u-green,.q4u-hover-green:hover{color:#fff!important;background-color:#4CAF50!important}
+.q4u-red,.q4u-hover-red:hover{color:#fff!important;background-color:#f44336!important}
+.q4u-panel:after,.q4u-panel:before,.q4u-clear:after,.q4u-clear:before {content:"";display:table;clear:both}
+
+.blink-green {
+  -webkit-animation: blink-green 1s infinite;  /* Safari 4+ */
+  -moz-animation: blink-green 1s infinite;  /* Fx 5+ */
+  -o-animation: blink-green 1s infinite;  /* Opera 12+ */
+  animation: blink-green 1s infinite;  /* IE 10+, Fx 29+ */
+}
+
+.blink-red {
+  -webkit-animation: blink-red 1s infinite;  /* Safari 4+ */
+  -moz-animation: blink-red 1s infinite;  /* Fx 5+ */
+  -o-animation: blink-red 1s infinite;  /* Opera 12+ */
+  animation: blink-red 1s infinite;  /* IE 10+, Fx 29+ */
+}
+
+@-webkit-keyframes blink-green {
+  0%, 49% {
+    background-color: rgb(117, 209, 63);
+    /* border: 3px solid #e50000; */
+  }
+  50%, 100% {
+    background-color: #b3e500;
+    /* border: 3px solid rgb(117, 209, 63); */
+  }
+}
+
+@-webkit-keyframes blink-red {
+  0%, 49% {
+    background-color: rgb(226, 46, 40);
+    /* border: 3px solid #e50000; */
+  }
+  50%, 100% {
+    background-color: #f07269;
+    /* border: 3px solid rgb(117, 209, 63); */
+  }
+}

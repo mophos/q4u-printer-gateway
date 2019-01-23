@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>PRINTER SETTUP</title>
+  <script src="./assets/vanilla.js"></script>
+
+  <link rel="stylesheet" href="./assets/milligram.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+
+  <div id="divOnline" class="q4u-panel q4u-green blink-green">
+    <span class="h1" style="font-weight:bold;">&nbsp; ONLINE...</span>
+  </div>
+
+  <div id="divOffline" class="q4u-panel q4u-red blink-red">
+    <span class="h1" style="font-weight:bold;">&nbsp; OFFLINE...</span>
+  </div>
+
+  <div class="container">
+    <form>
+      <span class="h1">Printer setting</span>
+      <div class="row">
+        <div class="column">
+          <label for="printerIp">Printer IP Address</label>
+          <input type="text" placeholder="192.168.192.168" id="printerIp">
+        </div>
+        <div class="column">
+          <label for="printerId">Printer ID</label>
+          <input type="text" readonly placeholder="OPD-PRINTER" id="printerId">
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="notifyServer">Notify Server</label>
+          <input type="text" id="notifyServer">
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="notifyUser">Notify User</label>
+          <input type="text" id="notifyUser">
+        </div>
+        <div class="column">
+          <label for="notifyPassword">Notify Password</label>
+          <input type="password" placeholder="******" id="notifyPassword">
+        </div>
+      </div>
+      <input class="button-primary" type="button" id="btnSave" value="SAVE">
+      |
+      <input class="button button-primary" type="button" id="btnStart" value="START">
+      <input class="button button-primary" type="button" id="btnStop" value="STOP">
+      <input class="button button-outline" type="button" id="btnTest" value="TEST">
+      <textarea name="txtLogs" style="height: 150px;" readonly id="txtLogs"></textarea>
+      <span class="h2">
+        พัฒนาโดย <strong>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร</strong> สำนักงานปลัดกระทรวงสาธารณสุข
+      </span>
+
+    </form>
+
+  </div>
+  <script>
+    require('./renderer.js')
+  </script>
+</body>
+
+</html>

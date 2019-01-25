@@ -272,6 +272,7 @@ async function printQueue(queue) {
       const remainQueue = queue.remainQueue || 0;
       const priorityName = queue.priorityName;
       const qrcode = queue.qrcode;
+      const queueInterview = queue.queueInterview;
 
       const dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
@@ -290,6 +291,10 @@ async function printQueue(queue) {
           .text('')
           .size(3, 3)
           .text(queueNumber)
+          .size(1, 1)
+          .text('คิวซักประวัติ')
+          .size(2, 2)
+          .text(queueInterview)
           .size(1, 1)
           .text('')
           .text(priorityName)

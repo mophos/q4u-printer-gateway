@@ -291,6 +291,7 @@ async function printQueue(queue) {
           .text('')
           .size(3, 3)
           .text(queueNumber)
+          .text('')
           .size(1, 1)
           .text('คิวซักประวัติ')
           .size(2, 2)

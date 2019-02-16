@@ -123,13 +123,17 @@ function printTest() {
           .text('50009')
           .size(1, 1)
           .text('ผู้สูงอายุ')
-          .qrimage('xxxx#9BE33IBFU#100010#01#50004#4#20190116#0012#ตรวจโรคทั่วไป', { type: 'png', mode: 'dhdw', size: 3 }, function (err) {
+          .qrimage('xxxx#9BE33IBFU#100010#01#50004#4#20190116#0012#ตรวจโรคทั่วไป', { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
             this.text('จำนวนที่รอ 5 คิว')
             this.text('วันที่ ' + dateTime)
+            this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
             this.text('**********************')
-            this.text('สแกน QR CODE ผ่านแอปพลิเคชัน H4U')
-            this.cut()
-            this.close();
+            this.text('ประเมินความพึงพอใจการใช้บริการ')
+            this.qrimage('http://satsurvey.dmh.go.th/app.quiz-hospital-opd.12272.html', { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
+              this.text('')
+              this.cut()
+              this.close();
+            });
           })
 
       });
@@ -323,6 +327,7 @@ async function printQueue(queue) {
             .encode('tis620')
             .size(2, 1)
             .text(hosname)
+            .text('')
             .text(servicePointName)
             .text('')
             .size(1, 1)
@@ -341,11 +346,15 @@ async function printQueue(queue) {
             .qrimage(qrcode, { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
               this.text(`จำนวนที่รอ ${remainQueue} คิว`)
               this.text('วันที่ ' + dateTime)
+              this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
               this.text('**********************')
-              this.text('สแกน QR CODE ผ่านแอปพลิเคชัน H4U')
-              this.cut()
-              this.close();
-            })
+              this.text('ประเมินความพึงพอใจการใช้บริการ ()')
+              this.qrimage('http://satsurvey.dmh.go.th/app.quiz-hospital-opd.12272.html', { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
+                this.text('')
+                this.cut()
+                this.close();
+              });
+            });
 
         });
 

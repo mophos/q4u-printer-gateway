@@ -301,6 +301,8 @@ function start() {
 
 async function printQueue(queue) {
 
+  console.log(queue);
+
   const device = new escpos.USB();
 
   if (device) {
@@ -316,6 +318,7 @@ async function printQueue(queue) {
         const priorityName = queue.priorityName;
         const qrcode = queue.qrcode;
         const queueInterview = queue.queueInterview;
+        const hn = queue.hn;
 
         const dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
@@ -325,6 +328,22 @@ async function printQueue(queue) {
             .model('qsprinter')
             .align('ct')
             .encode('tis620')
+            .size(2, 1)
+            .text(hosname)
+            .text('')
+            .text(servicePointName)
+            .text('')
+            .size(1, 1)
+            .text('ลำดับที่')
+            .text('')
+            .size(3, 3)
+            .text(queueNumber)
+            .size(2, 1)
+            .text('')
+            .text('')
+            .text('HN ' + hn)
+            .text('')
+            .cut()
             .size(2, 1)
             .text(hosname)
             .text('')

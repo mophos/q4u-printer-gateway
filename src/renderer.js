@@ -303,11 +303,11 @@ async function printQueue(queue) {
 
   console.log(queue);
 
-  const device = new escpos.USB();
+  try {
 
-  if (device) {
-    try {
+    const device = new escpos.USB();
 
+    if (device) {
       const printer = new escpos.Printer(device);
 
       if (queue) {
@@ -384,15 +384,15 @@ async function printQueue(queue) {
         txtLogs.value += `\n${moment().format('HH:mm:ss')} - [PRINT] Queue number ${queueNumber} not found.`;
         txtLogs.scrollTop = txtLogs.scrollHeight;
       }
-
-    } catch (error) {
-      txtLogs.value += `\n${moment().format('HH:mm:ss')} - [PRINT] Error.`;
+    } else {
+      txtLogs.value += `\n${moment().format('HH:mm:ss')} - [PRINT] Printer not found!.`;
       txtLogs.scrollTop = txtLogs.scrollHeight;
-      console.log(error);
     }
-  } else {
-    txtLogs.value += `\n${moment().format('HH:mm:ss')} - [PRINT] Printer not found!.`;
+
+  } catch (error) {
+    txtLogs.value += `\n${moment().format('HH:mm:ss')} - [PRINT] Error.`;
     txtLogs.scrollTop = txtLogs.scrollHeight;
+    console.log(error);
   }
 
 }

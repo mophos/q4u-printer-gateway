@@ -319,7 +319,7 @@ async function printQueue(queue) {
         const qrcode = queue.qrcode;
         const queueInterview = queue.queueInterview;
         const hn = queue.hn;
-
+        const firstName = queue.firstName;
         const dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
         device.open(function () {
@@ -340,8 +340,8 @@ async function printQueue(queue) {
             .text(queueNumber)
             .size(2, 1)
             .text('')
-            .text('')
             .text('HN ' + hn)
+            .text(firstName)
             .text('')
             .cut()
             .size(2, 1)

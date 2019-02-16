@@ -84,7 +84,7 @@ function init() {
 }
 
 function printTest() {
-  const device = new escpos.Network('192.168.192.168');
+  const device = new escpos.Network(txtPrinterIp.value);
 
   const printer = new escpos.Printer(device);
 

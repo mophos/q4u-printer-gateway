@@ -367,7 +367,7 @@ async function printQueue(queue) {
               this.text('วันที่ ' + dateTime)
               this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
               this.text('**********************')
-              this.text('ประเมินความพึงพอใจการใช้บริการ ()')
+              this.text('ประเมินความพึงพอใจ (กรมสุขภาพจิต)')
               this.qrimage('http://satsurvey.dmh.go.th/app.quiz-hospital-opd.12272.html', { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
                 this.text('')
                 this.cut()

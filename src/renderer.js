@@ -93,24 +93,6 @@ function init() {
 
 }
 
-var PRINTERS = [];
-
-function getPrinterList() {
-  try {
-    const devices = new escpos.USB();
-    PRINTERS = devices;
-  } catch (error) {
-    dialog.showMessageBox({
-      type: 'error',
-      message: 'เกิดข้อผิดพลาด',
-      detail: 'ไม่พบเครื่องพิมพ์'
-    });
-  }
-}
-
-// get printer list
-getPrinterList();
-
 function printTest() {
   try {
     const device = new escpos.USB();

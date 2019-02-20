@@ -93,6 +93,9 @@ function init() {
   btnStop.disabled = true;
 
   const printerId = txtPrinterId.value;
+
+  setTitle(printerId);
+
   TOPIC = `/printer/${printerId}`;
 
 }

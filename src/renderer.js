@@ -127,13 +127,9 @@ function printTest() {
             this.text('จำนวนที่รอ 5 คิว')
             this.text('วันที่ ' + dateTime)
             this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
-            this.text('**********************')
-            this.text('ประเมินความพึงพอใจการใช้บริการ')
-            this.qrimage('http://satsurvey.dmh.go.th/app.quiz-hospital-opd.12272.html', { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
-              this.text('')
-              this.cut()
-              this.close();
-            });
+            this.text('')
+            this.cut()
+            this.close();
           })
 
       });
@@ -338,22 +334,6 @@ async function printQueue(queue) {
             .text('')
             .size(3, 3)
             .text(queueNumber)
-            .size(2, 1)
-            .text('')
-            .text('HN ' + hn)
-            .text(firstName)
-            .text('')
-            .cut()
-            .size(2, 1)
-            .text(hosname)
-            .text('')
-            .text(servicePointName)
-            .text('')
-            .size(1, 1)
-            .text('ลำดับที่')
-            .text('')
-            .size(3, 3)
-            .text(queueNumber)
             .text('')
             .size(1, 1)
             .text('คิวซักประวัติ')
@@ -366,13 +346,9 @@ async function printQueue(queue) {
               this.text(`จำนวนที่รอ ${remainQueue} คิว`)
               this.text('วันที่ ' + dateTime)
               this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
-              this.text('**********************')
-              this.text('ประเมินความพึงพอใจ (กรมสุขภาพจิต)')
-              this.qrimage('http://satsurvey.dmh.go.th/app.quiz-hospital-opd.12272.html', { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
-                this.text('')
-                this.cut()
-                this.close();
-              });
+              this.text('')
+              this.cut()
+              this.close();
             });
 
         });

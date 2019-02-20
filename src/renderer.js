@@ -4,6 +4,7 @@ const mqtt = require('mqtt');
 
 const { dialog } = require('electron').remote
 
+var title = document.title;
 var btnTest = document.getElementById('btnTest');
 var btnSave = document.getElementById('btnSave');
 var btnStart = document.getElementById('btnStart');
@@ -23,12 +24,12 @@ var divOffline = document.getElementById('divOffline');
 var TOPIC = '';
 var CLIENT;
 
-txtPrinterId.addEventListener('dblclick', (event) => {
-  var id = Math.round(Math.random() * 1000000);
-  txtPrinterId.value = id;
-  localStorage.setItem('printerId', txtPrinterId.value);
+// txtPrinterId.addEventListener('dblclick', (event) => {
+//   var id = Math.round(Math.random() * 1000000);
+//   txtPrinterId.value = id;
+//   localStorage.setItem('printerId', txtPrinterId.value);
 
-});
+// });
 
 btnTest.addEventListener('click', (event) => {
   event.preventDefault();
@@ -64,6 +65,10 @@ btnStop.addEventListener('click', (event) => {
 
   stop();
 });
+
+function setTitle(text) {
+  document.title = 'Q4U-PRINTER SERVER: ' + (text || '');
+}
 
 function init() {
   txtPrinterIp.value = localStorage.getItem('printerIp') || '192.168.192.168';
@@ -137,6 +142,8 @@ function saveSetting() {
     localStorage.setItem('notifyPassword', notifyPassword);
     localStorage.setItem('notifyUser', notifyUser);
 
+    setTitle(printerId);
+
     dialog.showMessageBox({
       type: 'info',
       message: 'ผลการบันทึก',
@@ -153,6 +160,9 @@ function start() {
   const printerId = txtPrinterId.value;
 
   if (printerId && notifyServer) {
+
+    setTitle(printerId);
+
     CLIENT = mqtt.connect('mqtt://' + notifyServer)
 
     CLIENT.on('connect', function () {
@@ -259,12 +269,12 @@ function start() {
 }
 
 async function printQueue(queue) {
-
-  const printerIp = localStorage.getItem('printerIp');
-  const device = new escpos.Network(printerIp);
-  const printer = new escpos.Printer(device);
-
   try {
+
+    const printerIp = localStorage.getItem('printerIp');
+    const device = new escpos.Network(printerIp);
+    const printer = new escpos.Printer(device);
+
     if (queue) {
       const hosname = queue.hosname;
       const queueNumber = queue.queueNumber;

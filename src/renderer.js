@@ -23,12 +23,11 @@ var divOffline = document.getElementById('divOffline');
 var TOPIC = '';
 var CLIENT;
 
-txtPrinterId.addEventListener('dblclick', (event) => {
-  var id = Math.round(Math.random() * 1000000);
-  txtPrinterId.value = id;
-  localStorage.setItem('printerId', txtPrinterId.value);
-
-});
+// txtPrinterId.addEventListener('dblclick', (event) => {
+//   var id = Math.round(Math.random() * 1000000);
+//   txtPrinterId.value = id;
+//   localStorage.setItem('printerId', txtPrinterId.value);
+// });
 
 btnTest.addEventListener('click', (event) => {
   event.preventDefault();
@@ -75,12 +74,18 @@ btnStop.addEventListener('click', (event) => {
   stop();
 });
 
+function setTitle(text) {
+  document.title = 'Q4U-PRINTER SERVER: ' + (text || '');
+}
+
 function init() {
   // txtPrinterIp.value = localStorage.getItem('printerIp') || '192.168.192.168';
   txtPrinterId.value = localStorage.getItem('printerId') || Math.round(Math.random() * 1000000);
   txtNotifyServer.value = localStorage.getItem('notifyServer') || 'localhost';
   txtNotifyUser.value = localStorage.getItem('notifyUser') || 'q4u';
   txtNotifyPassword.value = localStorage.getItem('notifyPassword') || '##q4u##';
+
+  setTitle(txtPrinterId.value);
 
   divOffline.style.display = "block";
   divOnline.style.display = "none";
@@ -159,6 +164,9 @@ function saveSetting() {
   const notifyPassword = txtNotifyPassword.value;
 
   if (printerId && notifyServer && notifyPassword && notifyUser) {
+
+    setTitle(printerId);
+
     localStorage.setItem('printerId', printerId);
     // localStorage.setItem('printerIp', printerIp);
     localStorage.setItem('notifyServer', notifyServer);
@@ -182,6 +190,9 @@ function start() {
 
   try {
     if (printerId && notifyServer) {
+
+      setTitle(printerId);
+
       CLIENT = mqtt.connect('mqtt://' + notifyServer)
 
       CLIENT.on('connect', function () {
@@ -296,8 +307,6 @@ function start() {
 }
 
 async function printQueue(queue) {
-
-  console.log(queue);
 
   try {
 

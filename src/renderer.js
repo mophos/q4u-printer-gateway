@@ -132,6 +132,7 @@ function printTest() {
             this.text('จำนวนที่รอ 5 คิว')
             this.text('วันที่ ' + dateTime)
             this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
+            this.barcode('123456789', 'EAN13')
             this.text('')
             this.cut()
             this.close();
@@ -355,6 +356,7 @@ async function printQueue(queue) {
               this.text(`จำนวนที่รอ ${remainQueue} คิว`)
               this.text('วันที่ ' + dateTime)
               this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
+              this.barcode(hn, 'EAN13')
               this.text('')
               this.cut()
               this.close();

@@ -112,7 +112,7 @@ function printTest() {
         var dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
         printer
-          .model(null)
+          .model('qsprinter')
           // .font(' a')
           .align('ct')
           // .style('bu')
@@ -194,6 +194,8 @@ function start() {
 
   try {
     if (printerId && notifyServer) {
+
+      TOPIC = `/printer/${printerId}`;
 
       setTitle(printerId);
 
@@ -394,8 +396,13 @@ function stop() {
   txtLogs.value += `\n${moment().format('HH:mm:ss')} -  Stopping...`;
   txtLogs.scrollTop = txtLogs.scrollHeight;
 
-  CLIENT.unsubscribe(TOPIC);
-  CLIENT.end();
+  try {
+    CLIENT.unsubscribe(TOPIC);
+    CLIENT.end();
+  } catch (error) {
+    console.log(error);
+  }
+
 }
 
 // initial setting

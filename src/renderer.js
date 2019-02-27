@@ -100,11 +100,7 @@ function printTest() {
     var dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
     printer
-      .model(null)
-      // .font(' a')
-      // .align('ct')
-      // .style('bu')
-      // .size(1, 1)
+      .model('qrprinter')
       .encode('tis620')
       .size(2, 1)
       .text('โรงพยาบาลทดสอบ')
@@ -165,7 +161,7 @@ function start() {
   const printerId = txtPrinterId.value;
 
   if (printerId && notifyServer) {
-    
+
     TOPIC = `/printer/${printerId}`;
 
     setTitle(printerId);

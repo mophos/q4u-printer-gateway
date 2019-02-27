@@ -119,9 +119,10 @@ function printTest() {
       .qrimage('xxxx#9BE33IBFU#100010#01#50004#4#20190116#0012#ตรวจโรคทั่วไป', { type: 'png', mode: 'dhdw', size: 3 }, function (err) {
         this.text('จำนวนที่รอ 5 คิว')
         this.text('วันที่ ' + dateTime)
-        this.barcode('0001234567', 'EAN13')
         this.text('**********************')
         this.text('สแกน QR CODE ผ่านแอปพลิเคชัน H4U')
+        this.barcode('0001234567', 'EAN13')
+        this.text('')
         this.cut()
         this.close();
       })
@@ -314,9 +315,9 @@ async function printQueue(queue) {
           .qrimage(qrcode, { type: 'png', mode: 'dhdw', size: 2 }, function (err) {
             this.text(`จำนวนที่รอ ${remainQueue} คิว`)
             this.text('วันที่ ' + dateTime)
-            this.barcode(hn, 'EAN13')
             this.text('**********************')
             this.text('สแกน QR CODE ผ่านแอปพลิเคชัน H4U')
+            this.barcode(hn, 'EAN13')
             this.text('')
             this.cut()
             this.close();

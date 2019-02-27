@@ -165,6 +165,8 @@ function start() {
   const printerId = txtPrinterId.value;
 
   if (printerId && notifyServer) {
+    
+    TOPIC = `/printer/${printerId}`;
 
     setTitle(printerId);
 
@@ -295,7 +297,7 @@ async function printQueue(queue) {
       device.open(function () {
 
         printer
-          .model(null)
+          .model('qrprinter')
           .align('ct')
           .encode('tis620')
           .size(2, 1)
@@ -350,8 +352,14 @@ function stop() {
   txtLogs.value += `\n${moment().format('HH:mm:ss')} -  Stopping...`;
   txtLogs.scrollTop = txtLogs.scrollHeight;
 
-  CLIENT.unsubscribe(TOPIC);
-  CLIENT.end();
+  try {
+    CLIENT.unsubscribe(TOPIC);
+    CLIENT.end();
+  } catch (error) {
+    txtLogs.value += `\n${moment().format('HH:mm:ss')} -  STOP ERROR: ${error.message}`;
+    txtLogs.scrollTop = txtLogs.scrollHeight;
+    console.log(error);
+  }
 }
 
 // initial setting

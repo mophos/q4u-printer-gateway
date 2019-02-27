@@ -112,7 +112,7 @@ function printTest() {
         var dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
         printer
-          .model('qsprinter')
+          .model(null)
           // .font(' a')
           .align('ct')
           // .style('bu')
@@ -132,7 +132,10 @@ function printTest() {
             this.text('จำนวนที่รอ 5 คิว')
             this.text('วันที่ ' + dateTime)
             this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
-            this.barcode('123456789', 'EAN13')
+            this.text('')
+            this.encode('GB18030')
+            this.text('HN')
+            this.barcode(hn, 'CODE39', "CODE128")
             this.text('')
             this.cut()
             this.close();
@@ -331,7 +334,7 @@ async function printQueue(queue) {
         device.open(function () {
 
           printer
-            .model('qsprinter')
+            .model(null)
             .align('ct')
             .encode('tis620')
             .size(2, 1)
@@ -356,7 +359,10 @@ async function printQueue(queue) {
               this.text(`จำนวนที่รอ ${remainQueue} คิว`)
               this.text('วันที่ ' + dateTime)
               this.text('ตรวจสอบสถานะคิวผ่านแอป H4U')
-              this.barcode(hn, 'EAN13')
+              this.text('')
+              this.encode('GB18030')
+              this.text('HN')
+              this.barcode(hn, 'CODE39', "CODE128")
               this.text('')
               this.cut()
               this.close();

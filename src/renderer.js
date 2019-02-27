@@ -336,7 +336,7 @@ async function printQueue(queue) {
         device.open(function () {
 
           printer
-            .model(null)
+            .model('qsprinter')
             .align('ct')
             .encode('tis620')
             .size(2, 1)

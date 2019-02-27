@@ -100,9 +100,9 @@ function printTest() {
     var dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
     printer
-      .model('qsprinter')
+      .model(null)
       // .font(' a')
-      .align('ct')
+      // .align('ct')
       // .style('bu')
       // .size(1, 1)
       .encode('tis620')
@@ -121,7 +121,10 @@ function printTest() {
         this.text('วันที่ ' + dateTime)
         this.text('**********************')
         this.text('สแกน QR CODE ผ่านแอปพลิเคชัน H4U')
-        this.barcode('0001234567', 'EAN13')
+        this.text('')
+        this.encode('GB18030')
+        this.text('HN')
+        this.barcode('0041223', 'CODE39', "CODE128")
         this.text('')
         this.cut()
         this.close();
@@ -292,7 +295,7 @@ async function printQueue(queue) {
       device.open(function () {
 
         printer
-          .model('qsprinter')
+          .model(null)
           .align('ct')
           .encode('tis620')
           .size(2, 1)
@@ -317,7 +320,10 @@ async function printQueue(queue) {
             this.text('วันที่ ' + dateTime)
             this.text('**********************')
             this.text('สแกน QR CODE ผ่านแอปพลิเคชัน H4U')
-            this.barcode(hn, 'EAN13')
+            this.text('')
+            this.encode('GB18030')
+            this.text('HN')
+            this.barcode(hn, 'CODE39', "CODE128")
             this.text('')
             this.cut()
             this.close();

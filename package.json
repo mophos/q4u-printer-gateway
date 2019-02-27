@@ -46,7 +46,7 @@
   "dependencies": {
     "electron-compile": "^6.4.4",
     "electron-squirrel-startup": "^1.0.0",
-    "escpos": "^2.4.10",
+    "escpos": "^2.4.11",
     "moment": "^2.24.0",
     "mqtt": "^2.18.8"
   },

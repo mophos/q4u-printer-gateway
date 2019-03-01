@@ -159,7 +159,7 @@ function saveSetting() {
 function start() {
   const notifyServer = txtNotifyServer.value;
   const printerId = txtPrinterId.value;
-  
+
   const mqttUsername = localStorage.getItem('notifyUser') || 'q4u';
   const mqttPassword = localStorage.getItem('notifyPassword') || '##q4u##';
 
@@ -169,7 +169,11 @@ function start() {
 
     setTitle(printerId);
 
-    CLIENT = mqtt.connect('mqtt://' + notifyServer, {username: mqttUsername, password: mqttPassword});
+    CLIENT = mqtt.connect('mqtt://' + notifyServer,
+      {
+        username: mqttUsername,
+        password: mqttPassword
+      });
 
     CLIENT.on('connect', function () {
       CLIENT.subscribe(TOPIC, function (err) {

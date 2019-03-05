@@ -286,6 +286,7 @@ async function printQueue(queue) {
     const printer = new escpos.Printer(device);
 
     if (queue) {
+      const printSmallQueue = queue.printSmallQueue || 'N';
       const hosname = queue.hosname;
       const queueNumber = queue.queueNumber;
       const servicePointName = queue.servicePointName;
@@ -302,7 +303,29 @@ async function printQueue(queue) {
         printer
           .model('qrprinter')
           .align('ct')
-          .encode('tis620')
+          .encode('tis620');
+
+        if (printSmallQueue === 'Y') {
+          printer
+            .size(2, 1)
+            .text(hosname)
+            .text('')
+            .text(servicePointName)
+            .text('')
+            .size(1, 1)
+            .text('ลำดับที่')
+            .text('')
+            .size(3, 3)
+            .text(queueNumber)
+            .size(2, 1)
+            .text('')
+            .text('HN ' + hn)
+            .text(firstName)
+            .text('')
+            .cut()
+        }
+
+        printer
           .size(2, 1)
           .text(hosname)
           .text(servicePointName)

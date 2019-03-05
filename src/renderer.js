@@ -101,6 +101,7 @@ function printTest() {
 
     printer
       .model('qrprinter')
+      .align('ct')
       .encode('tis620')
       .size(2, 1)
       .text('โรงพยาบาลทดสอบ')
@@ -295,6 +296,7 @@ async function printQueue(queue) {
       const qrcode = queue.qrcode;
       const queueInterview = queue.queueInterview;
       const hn = queue.hn;
+      const firstName = queue.firstName;
 
       const dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 

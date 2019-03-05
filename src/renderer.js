@@ -113,10 +113,7 @@ function printTest() {
 
         printer
           .model('qsprinter')
-          // .font(' a')
           .align('ct')
-          // .style('bu')
-          // .size(1, 1)
           .encode('tis620')
           .size(2, 1)
           .text('โรงพยาบาลทดสอบ')

@@ -297,6 +297,7 @@ async function printQueue(queue) {
       const queueInterview = queue.queueInterview;
       const hn = queue.hn;
       const firstName = queue.firstName;
+      const lastName = queue.lastName;
 
       const dateTime = moment().locale('th').format('DD MMM YYYY HH:mm:ss');
 
@@ -322,7 +323,8 @@ async function printQueue(queue) {
             .size(2, 1)
             .text('')
             .text('HN ' + hn)
-            .text(firstName)
+            .size(1, 1)
+            .text(firstName + ' ' + lastName)
             .text('')
             .cut()
         }

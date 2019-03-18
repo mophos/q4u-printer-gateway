@@ -10,7 +10,6 @@ var btnStart = document.getElementById('btnStart');
 var btnStop = document.getElementById('btnStop');
 
 var txtPrinterId = document.getElementById('printerId');
-// var txtPrinterIp = document.getElementById('printerIp');
 var txtNotifyServer = document.getElementById('notifyServer');
 var txtNotifyUser = document.getElementById('notifyUser');
 var txtNotifyPassword = document.getElementById('notifyPassword');
@@ -23,16 +22,9 @@ var divOffline = document.getElementById('divOffline');
 var TOPIC = '';
 var CLIENT;
 
-// txtPrinterId.addEventListener('dblclick', (event) => {
-//   var id = Math.round(Math.random() * 1000000);
-//   txtPrinterId.value = id;
-//   localStorage.setItem('printerId', txtPrinterId.value);
-
-// });
-
 btnTest.addEventListener('click', (event) => {
   event.preventDefault();
-  // txtPrinterIp.value = localStorage.getItem('printerIp') || '192.168.192.168';
+
   try {
     const device = new escpos.USB();
 
